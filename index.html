@@ -1295,17 +1295,23 @@ const DATA = [
 // DATA loaded from external file
 
 
+　function render() {
+  const app = document.getElementById('app');
+  app.innerHTML = "";
 
+  DATA.forEach(q => {
+    const card = document.createElement('section');
+    card.className = 'card';
 
-　 // ────────────── 問題文（title） ──────────────
+    // ────────────── 問題文（title） ──────────────
     const h = document.createElement('div');
     h.className = 'title';
     h.innerHTML = (q.title || '').replace(/\n/g,'<br>');
     card.appendChild(h);
 
-    // ★ ← ここで instr（説明文）部分は完全に削除しました
+    // ★ instruction部分は削除（表示しない）
 
-    // ────────────── 選択肢 ──────────────
+    // ────────────── 選択肢（シャッフルなし） ──────────────
     const form = document.createElement('div');
     q.options.forEach((o, i) => {
       const opt = document.createElement('label');
@@ -1391,6 +1397,7 @@ const DATA = [
   app.appendChild(note);
 }
 render();
+
 
 </script>
 </body>
